@@ -1,0 +1,30 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:MusicService.UI.ViewModels"
+        xmlns:controls="using:Avalonia.Controls"
+        x:Class="MusicService.UI.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="MusicService.UI"
+        Width="800" Height="450">
+
+	<Window.DataContext>
+		<vm:MainWindowViewModel/>
+	</Window.DataContext>
+
+	<ContentControl>
+		<StackPanel Margin="20">
+
+			<TextBlock Text="{Binding Playlist.Name}" FontSize="24"/>
+			<TextBlock Text="{Binding Playlist.Description}" Margin="0,0,0,15"/>
+
+			<DataGrid Items="{Binding Songs}" AutoGenerateColumns="False">
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Title" Binding="{Binding Title}" />
+					<DataGridTextColumn Header="Artist" Binding="{Binding Artist}" />
+					<DataGridTextColumn Header="Album" Binding="{Binding Album}" />
+					<DataGridTextColumn Header="Duration" Binding="{Binding Duration}" />
+				</DataGrid.Columns>
+			</DataGrid>
+		</StackPanel>
+	</ContentControl>
+</Window>
